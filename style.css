@@ -1,3 +1,17 @@
+
+@font-face {
+    font-family: 'cousineregular';
+    src: url('cousine-regular-webfont.eot');
+    src: url('cousine-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('cousine-regular-webfont.woff2') format('woff2'),
+         url('cousine-regular-webfont.woff') format('woff'),
+         url('cousine-regular-webfont.ttf') format('truetype'),
+         url('cousine-regular-webfont.svg#cousineregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 body{
     margin: 0;
     padding: 0;
@@ -23,7 +37,7 @@ header{
     right: 0;
     margin: 2vw;
     padding: 2vw;
-    font-family: monospace;
+    font-family: 'cousineregular', monospace;
     font-size: 3vh;
     color: black;
     border-radius: 0%;
@@ -32,6 +46,7 @@ header{
     border-color: black;
     transition-duration: 1s;
     z-index: 3;
+    transform: rotate(10deg);
 }
 header:hover{
     opacity: 1;
@@ -48,6 +63,7 @@ header:hover{
     width: 100vw;
     margin: 0;
     padding: 0;
+    text-align: justify;
     z-index: 1;
     
 }
