@@ -10,6 +10,7 @@
 
 <body>
     <header>
+<!--
         <a href="#galerie1">a</a>
         <a href="#galerie2">b</a>
         <a href="#galerie3">c</a><br>
@@ -23,9 +24,19 @@
         <a href="#galerie11">k</a>
         <a href="#galerie12">l</a><br>
         <a href="#galerie99">infos</a>
+-->
+        
+<!--
+        <button class="previous" onclick="">previous</button>
+        <button class="next" onclick="">next</button>
+-->
+        <a href="#" onclick="goToPrev();return false;ScrollTo;" class="previous">←</a>
+        <a href="#" onclick="goToNext();return false;" class="next">→</a>
+        <a href="#galerie13">infos</a>
+     
     </header>
     
-    <div id="galerie1" class="galerie">
+    <div id="galerie1" class="galerie" class="current">
 
         <img src="images/2couv.jpg" class="N1" id="A1">
         
@@ -79,7 +90,7 @@
     </div>
 <!--    INFOS      -->
     
-      <div id="galerie99" class="galerie">
+      <div id="galerie13" class="galerie">
         <p class="P1">
             Nous sommes un collectif <sup>1.P.06</sup> d'étudiants en typographie/graphisme/communication visuelle.<br>
             Nous étudions tous à l'ERG, Bruxelles.<br>
@@ -93,5 +104,55 @@
     
     <script type=text/javascript src="jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="mesfonctions.js"></script>
+
+    <script type="text/javascript">
+    
+    var min = 1;
+    var max = 13;
+
+function goToNext() {
+    var hash = String(document.location.hash);
+    if (hash && hash.indexOf(/galerie/)) {
+        var newh = Number(hash.replace("#galerie",""));
+        (newh > max-1) ? newh = 0 : void(null);
+        document.location.hash = "#galerie" + String(newh+1); 
+    } else {
+        document.location.hash = "galerie1";        
+    }
+}
+function goToPrev() {
+    var hash = String(document.location.hash);
+    if (hash && hash.indexOf(/galerie/)) {
+        var newh = Number(hash.replace("#galerie",""));
+        (newh > max-1) ? newh = 0 : void(null);
+        document.location.hash = "#galerie" + String(newh-1); 
+    } else {
+        document.location.hash = "galerie1";        
+    }
+}
+        
+    </script>
+    <script type="text/javascript">
+    function ScrollTo(name) {
+  //init thread
+  ScrollToResolver(document.getElementById(name));
+}
+
+function ScrollToResolver(elem) {
+  var jump = parseInt(elem.getBoundingClientRect().top * .2);
+  document.body.scrollTop += jump;
+  document.documentElement.scrollTop += jump;
+  //lastjump detects anchor unreachable, also manual scrolling to cancel animation if scroll > jump
+  if (!elem.lastjump || elem.lastjump > Math.abs(jump)) {
+    elem.lastjump = Math.abs(jump);
+    setTimeout(function() {
+      ScrollToResolver(elem);
+    }, "100");
+  } else {
+    elem.lastjump = null;
+  }
+}
+
+    </script>
 </body>
 </html>
