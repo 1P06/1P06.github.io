@@ -25,7 +25,8 @@ header{
     width: 100vw;
     margin: 0;
     padding: 1vw;
-    font-family: monospace;
+    font-family: helvetica, monospace;
+    font-weight: 100;
     font-size: 3vh;
     color: black;
    text-align: center;
