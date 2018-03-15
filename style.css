@@ -46,7 +46,6 @@ header{
     border-color: black;
     transition-duration: 1s;
     z-index: 3;
-    transform: rotate(7.5deg);
 }
 header:hover{
     opacity: 1;
